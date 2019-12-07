@@ -42,13 +42,6 @@ if (!isDev && cluster.isMaster) {
     res.set('Content-Type', 'application/json');
     res.send('{"message":"Hello from the custom server!"}');
   });
-
-  app.get('/api/test', function(request, response) {
-    response.send({
-      "variable":"hello"
-    });
-  })
-
   
   app.get('/api/story', function(request, response) {
     Story.find({}, function(err, data){
@@ -62,6 +55,21 @@ if (!isDev && cluster.isMaster) {
         );
     });
   })
+/*
+  app.post('/api/story', urlencodedParser, function(request, response) {
+    var newStory = Story(request.body).save(function(err, data){
+      if (err) throw err;
+      response.json(data);
+    });
+  })*/
+  app.post('/api/story', urlencodedParser, function(req, res){
+    //get data from the view and add it to mongodb
+    var newStory = Story(req.body).save(function(err, data){
+        if (err) throw err;
+        res.json(data);
+        console.log("hallo")
+    })
+});
 
 
 
