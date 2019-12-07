@@ -32,7 +32,7 @@ if (!isDev && cluster.isMaster) {
 
 } else {
   const app = express();
-
+  app.use(bodyParser.json())
   // Priority serve any static files.
   app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
@@ -66,7 +66,7 @@ if (!isDev && cluster.isMaster) {
     //get data from the view and add it to mongodb
     var newStory = Story(req.body).save(function(err, data){
         if (err) throw err;
-        res.json(data);
+        res.status(201).send()
         console.log("hallo")
     })
 });

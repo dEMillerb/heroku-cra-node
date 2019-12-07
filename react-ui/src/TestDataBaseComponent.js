@@ -36,13 +36,14 @@ getStory() {
 }
 postStory() {
   console.log("Post Story")
-  fetch("/api/story", {
-    method: 'POST',
-    body: JSON.stringify({"item": this.state.stories}),
-    headers: {
-        'Content-Type': 'applications/json'
-    }
-  })
+  var textAreaToSend = this.state.valueTextarea
+  var sendAsString = JSON.stringify({"item": textAreaToSend})
+
+  fetch("/api/story", {  
+    method: 'post',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ "item": this.state.valueTextarea}),
+})
     .then(response => {
       if (!response.ok) {
         throw new Error(`status ${response.status}`);
@@ -55,9 +56,6 @@ postStory() {
       console.log("hello" + json)
      
       
-    this.setState({
-      stories : json.storys
-    });
 
     }).catch(e => {
 
