@@ -36,8 +36,7 @@ getStory() {
 }
 postStory() {
   console.log("Post Story")
-  var textAreaToSend = this.state.valueTextarea
-  var sendAsString = JSON.stringify({"item": textAreaToSend})
+
 
   fetch("/api/story", {  
     method: 'post',
@@ -61,40 +60,6 @@ postStory() {
 
     })
 }
-/*
-postStory() {
-  console.log("Updating Story");
-  const data = this.state.stories;
-  const postStory = {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-                "Content-Type": "application/json",
-                "Accept":"application/json"
-            }
-  }
-  
-  fetch("/api/story", postStory)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`status ${response.status}`);
-      }
-      return response.json();
-      
-    })
-    .then(json => {
-      //console.log(json)
-      
-    this.setState({
-      stories : json.storys
-      
-    });
-    //console.log('state' + postStory);
-    }).catch(e => {
-
-    })
-}
-*/
 
 componentDidMount() {
   this.getStory()
@@ -106,7 +71,6 @@ handleChange(event) {
 
 handleSubmit(event) {
   this.postStory();
-  //alert('So you telling me: ' + this.state.valueTextarea);
   event.preventDefault();
 }
 
