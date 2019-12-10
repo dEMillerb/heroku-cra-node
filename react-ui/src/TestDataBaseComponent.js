@@ -69,7 +69,7 @@ postStory() {
 
 componentDidMount() {
   this.getStory()
-  this.interval = setInterval(() => this.getStory(), 10000);
+  this.interval = setInterval(() => this.getStory(), 1000);
 }
 //Handler
 handleChange(event) {

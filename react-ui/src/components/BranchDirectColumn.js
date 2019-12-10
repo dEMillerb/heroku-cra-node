@@ -6,7 +6,7 @@ export default class BranchDirectColumn extends Component {
     render() { 
         return (
                 <>
-                  <div className="branch-column">
+                  <div className="branch-column active">
                   {this.props.children}  
                   </div>
                 </>

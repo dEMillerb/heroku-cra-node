@@ -8,6 +8,12 @@
     &.active{
       margin-left: 0px !important;
       margin-right: 0px;
+      + .branch-column{
+        background-color: #393738;
+        transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        filter: opacity(0.5) blur(2px) grayscale(1);
+      }
     }
   }
   .burgerMenu{
@@ -38,7 +44,7 @@ background: #4c4c4c;
 background: #ee7f00; 
 }
 .logo{
-  padding-top:50px;
+  padding-top:20px;
 }
 .parallax{
   height: 100vh;
@@ -84,7 +90,9 @@ body{
   -moz-transform-style: preserve-3d;
   -o-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
-
+  p{
+    line-height: 1.2;
+  }
 }
 small{
   color: #acb0b3;
@@ -112,6 +120,8 @@ small{
 .branch-column{
   flex-direction: column;
   width: 100vw;
+  transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
 }
 .branch{
   display: flex;
@@ -268,10 +278,9 @@ small{
 .tgb-form{
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  margin-bottom: 1rem;
+  padding: 10px 10px 0px 10px;
   h3{
-    text-align: center;
+    text-align: left;
     color: #fafafa;
   }
   textarea{
@@ -284,6 +293,9 @@ small{
   }
   textarea:focus{
     outline-color: #ee7f00;
+  }
+  button{
+    margin-top: 20px;
   }
 }
 .tgb-input{

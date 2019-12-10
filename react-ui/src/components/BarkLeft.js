@@ -45,9 +45,11 @@ export default class BarkLeft extends Component {
                 <>
                   <div className={`bark-left ${SideMenuActive}`}>
                       <a onClick={this.toggleBurgerMenu} className={`burgerMenu ${BurgerMenuActive}`}>
+                          <div>
                           <span className="line"></span>
                           <span className="line"></span>
                           <span className="line"></span>
+                          </div>
                       </a>
                       <nav className="content">
                           <div className="logo">
@@ -72,9 +74,10 @@ export default class BarkLeft extends Component {
                                     value={this.state.password.value}
                                     onChange={this.changeHandlerPassword}
                                     /> 
+                                  <button  className="tgb-btn authorize">Authorize</button>
                               </div>
                               {/*<button onClick={() => this.pusher} className="tgb-btn authorize">pusher</button>*/}
-                              <button  className="tgb-btn authorize">Authorize</button>
+                             
                           </form>
                       </nav>
                   </div>
