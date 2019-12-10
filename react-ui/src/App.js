@@ -1,14 +1,19 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
+import BarkTop from './components/BarkTop';
+import Root from './components/Root';
+import BarkLeft from './components/BarkLeft';
 import TestDataBaseComponent from './TestDataBaseComponent';
 
 function App() {
   
   return (
     <div className="App">
-      <header className="App-header">
+        <BarkTop/>
+        <Root>
+        <BarkLeft/>
         <TestDataBaseComponent displaytext="First Component Data"/> 
-      </header>
+        </Root>
     </div>
   );
 

@@ -1,4 +1,10 @@
 import React, {Component} from 'react';
+import Branch from './components/Branch';
+import BranchDirectRow from './components/BranchDirectRow';
+import BranchDirectColumn from './components/BranchDirectColumn';
+import Leaf from './components/Leaf';
+import CardStoryteller from './components/CardStoryteller';
+
 
 export default class TestDataBaseComponent extends Component {
   constructor(props) {    
@@ -65,6 +71,7 @@ componentDidMount() {
   this.getStory()
   this.interval = setInterval(() => this.getStory(), 10000);
 }
+//Handler
 handleChange(event) {
   this.setState({valueTextarea: event.target.value});
 }
@@ -77,21 +84,36 @@ handleSubmit(event) {
 //Render FrontEnd with Data
 render() {    
     return (
-    <div class="content">    
-        <form action="/api/story" method="POST" onSubmit={this.handleSubmit}>
-        <label>
-          <textarea type="text" name="item" placeholder="Tell me your Stroy" value={this.state.valueTextarea} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-        <h3>Test Component with Database</h3> 
-        <ul>
-            {
+      <>
+      <BranchDirectColumn>
+        <BranchDirectRow>
+          <Branch>  
+          <Leaf>
+            <CardStoryteller 
+            headline="Chapter: One"
+            subline="Rebuilding the Sanctuary"
+            content={
               this.state.stories.map(story => {
-                  return <li key={story._id}> message={story.item} </li>;
+                  return <li key={story._id}> {story.item} </li>;
               })
             }
-        </ul>
-    </div>
+            />
+          </Leaf> 
+        </Branch> 
+        </BranchDirectRow>
+
+        <BranchDirectRow>
+          <Branch>  
+            <Leaf>
+            <form className="tgb-form" action="/api/story" method="POST" onSubmit={this.handleSubmit}>
+              <h3>Tell me fellow Ironlight, what Story can you tell me today?</h3>
+              <textarea type="text" name="item" placeholder="Tell me your Stroy" value={this.state.valueTextarea} onChange={this.handleChange} />
+              <button className="tgb-btn authorize" type="submit" value="Submit" >Add Story</button>
+            </form> 
+            </Leaf> 
+          </Branch> 
+        </BranchDirectRow>
+      </BranchDirectColumn>
+      </>
     )  }
 }
