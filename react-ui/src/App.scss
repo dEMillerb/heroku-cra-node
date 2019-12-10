@@ -9,7 +9,6 @@
       margin-left: 0px !important;
       margin-right: 0px;
       + .branch-column{
-        background-color: #393738;
         transition: all 0.4s ease-in-out;
         -webkit-transition: all 0.4s ease-in-out;
         filter: opacity(0.5) blur(2px) grayscale(1);
@@ -44,7 +43,7 @@ background: #4c4c4c;
 background: #ee7f00; 
 }
 .logo{
-  padding-top:20px;
+  height: auto;
 }
 .parallax{
   height: 100vh;
@@ -480,11 +479,11 @@ small{
     border: none;
     background: none;
     width: 14px;
-    height: 100%;
+    height: 40px;
     outline: none;
     position: absolute;
     left: 252px;
-    top: -8px;
+    top: 184px;
     background-color: #393738;
 }
 
@@ -499,9 +498,9 @@ small{
   margin-left: 8px;
 }
 
-.line:nth-child(1) { top: 14px; }
-.line:nth-child(2) { top: 22px; }
-.line:nth-child(3) { top: 29px; }
+.line:nth-child(1) { top: 10px; }
+.line:nth-child(2) { top: 18px; }
+.line:nth-child(3) { top: 25px; }
 
 .burgerMenu.checked .line:nth-child(1){
   transform: translateY(12px) rotate(-45deg);
@@ -515,11 +514,14 @@ small{
   transform: translateY(-12px) rotate(45deg);
 }
 .burgerMenu.checked{
-  left: 0;
-  width: 245px;
-  background-color: #393738;
+  left: 199px;
+  width: 45px;
+  background-color: #474546;
   padding-right: 0 !important;
   height: 40px;
+  border-top: 5px solid #393738;
+  border-left: 5px solid #393738;
+  border-bottom: 5px solid #393738;
   .line{
     background: #ee7f00 !important;
     border-radius: 0;

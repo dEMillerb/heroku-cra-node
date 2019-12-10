@@ -45,11 +45,9 @@ export default class BarkLeft extends Component {
                 <>
                   <div className={`bark-left ${SideMenuActive}`}>
                       <a onClick={this.toggleBurgerMenu} className={`burgerMenu ${BurgerMenuActive}`}>
-                          <div>
                           <span className="line"></span>
                           <span className="line"></span>
                           <span className="line"></span>
-                          </div>
                       </a>
                       <nav className="content">
                           <div className="logo">
