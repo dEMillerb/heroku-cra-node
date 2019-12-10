@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.scss';
+import ChapterImg from '../assets/img/bgr_3.jpg'
 
 export default class CardStoryteller extends Component {
   constructor(props) {    
@@ -51,7 +52,7 @@ componentDidMount() {
                             </p>
                         </div>
                     </div>
-                    <img src="../assets/img/bgr_3" className=" " alt="" />
+                    <img src={ChapterImg} className=" " alt="" />
                     <div className="vein-content">
                         <div className="vein-title">
                             <p>
