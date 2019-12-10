@@ -55,13 +55,7 @@ if (!isDev && cluster.isMaster) {
         );
     });
   })
-/*
-  app.post('/api/story', urlencodedParser, function(request, response) {
-    var newStory = Story(request.body).save(function(err, data){
-      if (err) throw err;
-      response.json(data);
-    });
-  })*/
+
   app.post('/api/story', urlencodedParser, function(req, res){
     //get data from the view and add it to mongodb
     var newStory = Story(req.body).save(function(err, data){
@@ -69,9 +63,7 @@ if (!isDev && cluster.isMaster) {
         res.status(201).send()
         console.log("hallo")
     })
-});
-
-
+  });
 
   // All remaining requests return the React app, so it can handle routing.
   app.get('*', function(request, response) {
