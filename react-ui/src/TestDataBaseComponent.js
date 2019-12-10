@@ -4,6 +4,8 @@ import BranchDirectRow from './components/BranchDirectRow';
 import BranchDirectColumn from './components/BranchDirectColumn';
 import Leaf from './components/Leaf';
 import CardStoryteller from './components/CardStoryteller';
+import DeletIcon from './assets/icon/delete.svg'
+import EditIcon from './assets/icon/edit.svg'
 
 
 export default class TestDataBaseComponent extends Component {
@@ -94,7 +96,19 @@ render() {
             subline="Rebuilding the Sanctuary"
             content={
               this.state.stories.map(story => {
-                  return <li key={story._id}> {story.item} </li>;
+                  return<>
+                          <li key={story._id}> 
+                          <p>{story.item} </p>
+                            <div className="interaction">
+                              <div className="icon">
+                                <img  src={EditIcon}/>
+                              </div>
+                              <div className="icon">
+                                <img src={DeletIcon}/> 
+                              </div>
+                            </div>
+                          </li>
+                        </>
               })
             }
             />

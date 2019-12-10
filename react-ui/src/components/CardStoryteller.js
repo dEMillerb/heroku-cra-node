@@ -60,7 +60,7 @@ componentDidMount() {
                             </p>
                         </div>
                         <div className="vein-text">
-                            <ul>
+                            <ul className="">
                             {this.props.content}
                             </ul>
                         </div>

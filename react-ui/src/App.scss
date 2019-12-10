@@ -144,14 +144,57 @@ small{
     background-color: #474546;
     padding: 20px;
     list-style: none;
-    border: 4px solid #393738;
+
     li{
-    color: #393738;
-    background-color: #ffffff;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: -10px 10px rgba(0, 0, 0, 0.2);
-    -webkit-box-shadow: -10px 10px rgba(0, 0, 0, 0.2);
+      color: #393738;
+      background-color: #ffffff;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: -10px 10px rgba(0, 0, 0, 0.2);
+      -webkit-box-shadow: -10px 10px rgba(0, 0, 0, 0.2);
+    }
+    p{
+      display: flex;
+      flex: 1 1 auto;
+      margin-right: 20px;
+    }
+    .interaction{
+ 
+      display: flex;
+      flex-direction: column;
+      .icon{
+        margin-bottom: 20px;
+        background-color: #393738;
+        height: 25px;
+        width: 25px;
+        color: #fafafa;
+        border: solid 6px #474546;
+        border-radius: 50%;
+        border: 2px solid #3ed60d;
+        transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        img{
+          height: 15px;
+          width: 15px;
+          padding: 5px;
+          transition: all 0.4s ease-in-out;
+          -webkit-transition: all 0.4s ease-in-out;
+        }
+        &:last-child{
+          border: 2px solid #ce1111;
+        }
+        &:hover{
+          border: 2px solid #474546 ;
+          background-color: #3ed60d; transition: all 0.4s ease-in-out;
+          -webkit-transition: all 0.4s ease-in-out;
+          &:last-child{
+            border: 2px solid #474546 ;
+            background-color: #ce1111;
+            transition: all 0.4s ease-in-out;
+            -webkit-transition: all 0.4s ease-in-out;
+          }
+        }
+      }
     }
   }
 }
@@ -355,9 +398,42 @@ small{
   color: #4c4c4c;
   border-bottom: solid 10px #474546;
   &.vein-inverted{
-    background-color: #393738 !important;
+    background-color: #474546 !important;
     color: #ffffff !important;
     border-bottom: none !important;
+    .vein-title{
+      padding: 5px 0px 5px 25px;
+      font-size: 1.8rem !important;
+      background-color: #393738;
+      color: #ee7f00;
+    }
+    .vein-text{
+      border:solid 5px #393738;
+      li{
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+        -webkit-align-content: stretch;
+        -ms-flex-line-pack: stretch;
+        align-content: stretch;
+        -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+      }
+    }
+    .vein-content{
+      margin-top: 20px;
+     
+    }
     &:hover{
       border-bottom: none !important;
       box-shadow: none !important;
