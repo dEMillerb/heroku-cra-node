@@ -25,7 +25,7 @@ export default class TestDataBaseComponent extends Component {
 
   componentDidMount() {
     this.getStory()
-    this.interval = setInterval(() => this.getStory(), 1000);
+    this.interval = setInterval(() => this.getStory(), 15000);
   }
   //Handler
   handleChange(event) {
@@ -83,8 +83,6 @@ postStory() {
 
     })
 }
-//--------------------------------------------
-
 deleteStory(item) {
   console.log("Delete Story")
   console.log(item)
@@ -100,33 +98,19 @@ deleteStory(item) {
       return response.json();
       
     })
-    .then(item => {
-      
+    .then(json => {
       let story = this.state.stories.filter(stories =>{
         return stories.item !== item
       });
-       
       this.setState({
         stories: story
-      })
-      console.log("Delete Story UI")
-     
-    }).catch(e => {
+      });
+    })
+    .catch(e => {
 
     })
 }
-
-handleDelete(item) {
-  fetch("/api/story/" + this.state.stories.item, {
-    method: 'DelETE'
-})
-.then(function (resp) {
-    alert('Done');
-});
-
-
-
-}
+//--------------------------------------------
 
 /*handleDelete(item) {
   let story = this.state.stories.filter(clickedStory =>{
