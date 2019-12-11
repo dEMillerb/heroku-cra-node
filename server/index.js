@@ -38,19 +38,19 @@ if (!isDev && cluster.isMaster) {
 
 
   // Answer API requests.
-  app.get('/api', function (req, res) {
+  /*app.get('/api', function (req, res) {
     res.set('Content-Type', 'application/json');
     res.send('{"message":"Hello from the custom server!"}');
-  });
+  });*/
   
-  app.get('/api/story', function(request, response) {
+  app.get('/api/story', function(req, res) {
     Story.find({}, function(err, data){
       if (err) throw err;
 
       var jsonToReturnToUi={
         storys: data
       }
-      response.send(
+      res.send(
         jsonToReturnToUi
         );
     });
@@ -63,6 +63,17 @@ if (!isDev && cluster.isMaster) {
         res.status(201).send()
         console.log("hallo")
     })
+  });
+
+  app.delete('/api/story/:item', urlencodedParser, function(req, res){
+    // delete the requested item from mongodb
+    
+    Story.find({item: req.params.item.replace(/\-/g, " ")}).deleteOne(function(err, data){
+        if (err) throw err;
+        res.json(data);
+        console.log("bye")
+    });
+    
   });
 
   // All remaining requests return the React app, so it can handle routing.
