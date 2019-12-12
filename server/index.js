@@ -76,6 +76,17 @@ if (!isDev && cluster.isMaster) {
     
   });
 
+  app.put('/api/story/:item', urlencodedParser, function(req, res){
+    // Update the requested item from mongodb
+    
+    Story.find({item: req.params.item}).updateOne(function(err, data){
+        if (err) throw err;
+        res.json(data);
+        console.log("bye")
+    });
+    
+  });
+
   // All remaining requests return the React app, so it can handle routing.
   app.get('*', function(request, response) {
     response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));

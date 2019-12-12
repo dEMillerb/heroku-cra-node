@@ -52,7 +52,7 @@ componentDidMount() {
                             </p>
                         </div>
                     </div>
-                    <img src={ChapterImg} className=" " alt="" />
+                    <img src={ChapterImg} className="vein-img" alt="" />
                     <div className="vein-content">
                         <div className="vein-title">
                             <p>

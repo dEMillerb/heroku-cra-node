@@ -140,6 +140,7 @@ small{
   flex: 1 1 ;
   flex-grow: 1;
   flex-basis: 20rem;
+  padding: 20px;
   ul{
     background-color: #474546;
     padding: 20px;
@@ -162,6 +163,60 @@ small{
  
       display: flex;
       flex-direction: column;
+      .edit{
+        display: flex;
+        flex-direction: row ;
+        margin-bottom: 20px;
+        transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        border-bottom: solid 1px #393738;
+        padding-bottom: 20px;
+        &.editOff{
+          display: none;
+          transition: all 0.4s ease-in-out;
+          -webkit-transition: all 0.4s ease-in-out;
+        }
+        textarea{
+          display: flex ;
+          flex:1 1 auto ;
+          background-color: #393738;
+          color: #ffffff;
+          padding: 20px;
+          border: none;
+          transition: all 0.4s ease-in-out;
+          -webkit-transition: all 0.4s ease-in-out;
+          outline-style: solid;
+          outline-color: #393738;
+          outline-width: 1px;
+          &:focus{
+            outline-color: #ee7f00;
+            background-color: #393738;
+            box-shadow: -10px 10px rgba(0, 0, 0, 0.2);
+            -webkit-box-shadow: -10px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease-in-out;
+            -webkit-transition: all 0.4s ease-in-out;
+          }
+        }
+        .icon{
+          display:flex;
+      
+        }
+        .icon-bgr{
+          background-color: #393738;
+          padding-right: 20px;
+          padding-left: 20px;
+          margin-left: 10px;
+          display: flex;
+          align-items: center;
+          .icon{
+            display: flex;
+            margin-top: 20px;
+          }
+          
+        }
+       
+
+      }
       .icon{
         margin-bottom: 20px;
         background-color: #393738;
@@ -170,7 +225,7 @@ small{
         color: #fafafa;
         border: solid 6px #474546;
         border-radius: 50%;
-        border: 2px solid #3ed60d;
+        border: 2px solid #ee7f00;
         transition: all 0.4s ease-in-out;
         -webkit-transition: all 0.4s ease-in-out;
         img{
@@ -181,15 +236,15 @@ small{
           -webkit-transition: all 0.4s ease-in-out;
         }
         &:last-child{
-          border: 2px solid #ce1111;
+          border: 2px solid #285277;
         }
         &:hover{
           border: 2px solid #474546 ;
-          background-color: #3ed60d; transition: all 0.4s ease-in-out;
+          background-color: #ee7f00; transition: all 0.4s ease-in-out;
           -webkit-transition: all 0.4s ease-in-out;
           &:last-child{
             border: 2px solid #474546 ;
-            background-color: #ce1111;
+            background-color: #285277;
             transition: all 0.4s ease-in-out;
             -webkit-transition: all 0.4s ease-in-out;
           }
@@ -328,12 +383,26 @@ small{
     color: #fafafa;
   }
   textarea{
-    width: auto;
-    background-color: #393738;
     margin-bottom: 25px;
-    color: #fafafa;
+    display: flex ;
+    flex:auto ;
+    background-color: #393738;
+    color: #ffffff;
     padding: 20px;
     border: none;
+    transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    outline-style: solid;
+    outline-color: #393738;
+    outline-width: 1px;
+    &:focus{
+      outline-color: #ee7f00;
+      background-color: #393738;
+      box-shadow: -10px 10px rgba(0, 0, 0, 0.2);
+      -webkit-box-shadow: -10px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s ease-in-out;
+      -webkit-transition: all 0.4s ease-in-out;
+    }
   }
   textarea:focus{
     outline-color: #ee7f00;
@@ -389,11 +458,9 @@ small{
 .vein{
   transition: all 0.4s ease-in-out;
   -webkit-transition: all 0.4s ease-in-out;
- // flex: 1 1 ;
-  //flex-basis: 20rem;
   display: flex;
   flex-direction: column;
-  margin: 1.875rem;
+  //margin: 1.875rem;
   background-color: #fff;
   color: #4c4c4c;
   border-bottom: solid 10px #474546;
@@ -407,8 +474,11 @@ small{
       background-color: #393738;
       color: #ee7f00;
     }
+    .vein-img{
+      border-bottom: 5px solid #393738;
+    }
     .vein-text{
-      border:solid 5px #393738;
+      //border:solid 5px #393738;
       li{
         display: -ms-flexbox;
         display: -webkit-flex;
