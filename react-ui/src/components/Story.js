@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.scss';
-
+import editIcon from '../assets/icon/edit.svg'
+import deleteIcon from '../assets/icon/delete.svg'
 
 export default class Story extends Component {
     constructor(props) {    
@@ -65,11 +66,11 @@ toggleEditMenu(){
                     <div className="interaction">
                         <div className="icon">
                 
-                        <img src="" onClick={() => {this.toggleEditMenu()}} className={` ${editOn}`} alt="go"/>
+                        <img src={editIcon} onClick={() => {this.toggleEditMenu()}} className={` ${editOn}`} alt="go"/>
 
                         </div>
                         <div className="icon">
-                        <img onClick={() => {this.deleteStory(this.props.onClickDelete)}} src="" alt="go"/> 
+                        <img onClick={() => {this.deleteStory(this.props.onClickDelete)}} src={deleteIcon} alt="go"/> 
                         </div>
                     </div>
                     </li>
@@ -77,7 +78,7 @@ toggleEditMenu(){
                     <div className={`edit ${editOn}`}>
                         <textarea type="text" name="edit" placeholder="I missunderstood you? What is it you want to update?" value={this.state.valueEditarea} onChange={this.handleChange} />
                         <div className="icon-bgr">
-                        <img className="icon" src=""  alt="go"/>
+                        <img className="icon" src={editIcon}  alt="go"/>
                         </div>
                     </div>
                     </div>
