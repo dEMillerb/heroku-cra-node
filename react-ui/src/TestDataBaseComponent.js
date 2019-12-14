@@ -4,8 +4,8 @@ import BranchDirectRow from './components/BranchDirectRow';
 import BranchDirectColumn from './components/BranchDirectColumn';
 import Leaf from './components/Leaf';
 import CardStoryteller from './components/CardStoryteller';
-import DeletIcon from './assets/icon/delete.svg'
-import EditIcon from './assets/icon/edit.svg'
+import Story from './components/Story';
+
 
 
 export default class TestDataBaseComponent extends Component {
@@ -21,13 +21,10 @@ export default class TestDataBaseComponent extends Component {
         valueTextarea:[],
         valueEditarea:'',
         editOn:false,
-        //editBtn: React.createRef()
       };
       this.handleChange = this.handleChange.bind(this);
       this.handleEdit = this.handleEdit.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
-      this.toggleEditMenu = this.toggleEditMenu.bind(this);
-
   }
 
 componentDidMount() {
@@ -45,30 +42,9 @@ handleSubmit(event) {
   this.postStory();
   event.preventDefault();
 } 
-/*
-toggleEditMenu(index){
-    this.setState({ editOn: index }, () => { 
-    console.log(index) 
-  })
 
-}*/
-toggleEditMenu(i){
-    const currentState = this.state.editOn;
-    const currentBtn = this.editBtn.current;
-    if (currentBtn.id == i){
-      console.log('currentBtn.id' + ':' + currentBtn.id + '-' + 'index' + ':' + i)
-      this.setState({ editOn: !currentState });
-    }
-    
-    console.log('i' + ' ' + i)
-    console.log('currentBtn.id' + ' ' + currentBtn.id)
-    
-  
-  //console.log('index' + ' ' + id)
-}
-handleEdit(event) {
-  this.setState({valueEditarea: event.target.value});
-}
+
+
 //Requests
 getStory() {
   console.log("Recaping Story")
@@ -149,6 +125,11 @@ deleteStory(item) {
 //-----------------------------------------------------------------------------------------------
 
 
+
+handleEdit(event) {
+  this.setState({valueEditarea: event.target.value});
+}
+//-----------------------------------------------------------------------------------------------
 //Render FrontEnd with Data
 render() {    
   const editOn = this.state.editOn ? '' : 'editOff';
@@ -162,29 +143,13 @@ render() {
             headline="Chapter: One"
             subline="Rebuilding the Sanctuary"
             content={
-              this.state.stories.map((story, i) => {
+              this.state.stories.map((story) => {
                   return<>
-                          <li key={story._id}> 
-                          <p>{story.item} </p>
-                            <div className="interaction">
-                              <div className="icon">
-                       
-                                <img id={i} ref={this.editBtn} src={EditIcon} onClick={() => {this.toggleEditMenu(i)}} className={` ${editOn}`}/>
-
-                              </div>
-                              <div className="icon">
-                                <img onClick={() => {this.deleteStory(story.item)}} src={DeletIcon}/> 
-                              </div>
-                            </div>
-                          </li>
-                          <div className="interaction">
-                            <div className={`edit ${editOn}`}>
-                              <textarea id={i} ref={this.editArea} type="text" name="edit" placeholder="I missunderstood you? What is it you want to update?" value={this.state.valueEditarea} onChange={this.handleEdit} />
-                              <div className="icon-bgr">
-                                <img className="icon" src={EditIcon} />
-                              </div>
-                            </div>
-                          </div>
+                        <Story
+                          mapKey={story._id}
+                          StoryItem={story.item}
+                          onClickDelete={story.item}
+                        />
                         </>
               })
             }
