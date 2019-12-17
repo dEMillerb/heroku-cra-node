@@ -23,7 +23,6 @@ export default class TestDataBaseComponent extends Component {
         editOn:false,
       };
       this.handleChange = this.handleChange.bind(this);
-      this.handleEdit = this.handleEdit.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -93,7 +92,7 @@ postStory() {
 
     })
 }
-
+/*
 deleteStory(item) {
   console.log("Delete Story")
   console.log(item)
@@ -120,19 +119,13 @@ deleteStory(item) {
     .catch(e => {
 
     })
-}
+}*/
 
 //-----------------------------------------------------------------------------------------------
 
-
-
-handleEdit(event) {
-  this.setState({valueEditarea: event.target.value});
-}
 //-----------------------------------------------------------------------------------------------
 //Render FrontEnd with Data
 render() {    
-  const editOn = this.state.editOn ? '' : 'editOff';
     return (
       <>
       <BranchDirectColumn>

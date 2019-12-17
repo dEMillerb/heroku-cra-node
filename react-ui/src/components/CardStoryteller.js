@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.scss';
-import ChapterImg from '../assets/img/bgr_3.jpg'
+import ChapterImg from '../assets/img/storyteller.jpg'
 
 export default class CardStoryteller extends Component {
   constructor(props) {    
