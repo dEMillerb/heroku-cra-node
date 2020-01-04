@@ -4,6 +4,8 @@ const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+const eris = require('eris');
+
 
 const isDev = process.env.NODE_ENV !== 'production';
 const PORT = process.env.PORT || 5000;
@@ -16,6 +18,55 @@ var storySchema = new mongoose.Schema({
 var Story = mongoose.model('Story', storySchema);
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
+const bot = new eris.Client('NjQ3MTgyNTA4MDYwMDQ5NDEw.Xdb_3g.p7cNh96U08uDV-zVsixFdDZdXso');
+var guildID = "637354682716782602"
+var channelID ="647159337709469726"
+// When the bot is connected and ready, log to console.
+bot.on('ready', () => {
+   console.log('Connected and ready.');
+   //bot.createMessage(channelID, "And the story goes on...!");
+});
+// Every time a message is sent anywhere the bot is present,
+// this event will fire and we will check if the bot was mentioned.
+// If it was, the bot will attempt to respond with "Present".
+bot.on('messageCreate', async (msg) => {
+   const botWasMentioned = msg.mentions.find(
+       mentionedUser => mentionedUser.id === bot.user.id,
+   );
+
+    if (msg.channel.type === 1)
+    {
+        try {
+            bot.createMessage(channelID, msg.content);
+        } catch (err) {
+            // There are various reasons why sending a message may fail.
+            // The API might time out or choke and return a 5xx status,
+            // or the bot may not have permission to send the
+            // message (403 status).
+            console.warn('Failed to respond to mention.');
+            console.warn(err);
+        }
+    }
+
+   if (botWasMentioned) {
+       try {
+           await msg.channel.createMessage('Present');
+       } catch (err) {
+           // There are various reasons why sending a message may fail.
+           // The API might time out or choke and return a 5xx status,
+           // or the bot may not have permission to send the
+           // message (403 status).
+           console.warn('Failed to respond to mention.');
+           console.warn(err);
+       }
+   }
+});
+bot.on('error', err => {
+   console.warn(err);
+});
+bot.connect();
+
 
 // Multi-process to utilize all CPU cores.
 if (!isDev && cluster.isMaster) {
