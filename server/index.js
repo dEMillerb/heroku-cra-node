@@ -14,12 +14,13 @@ mongoose.connect('mongodb+srv://testuser:user@cluster0-uq1kn.mongodb.net/test?re
 var storySchema = new mongoose.Schema({
   item: String
 });
-
+//mongoose.set('useFindAndModify', false);
 var Story = mongoose.model('Story', storySchema);
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-const bot = new eris.Client('NjQ3MTgyNTA4MDYwMDQ5NDEw.Xdb_3g.p7cNh96U08uDV-zVsixFdDZdXso');
+//Discord BOT
+const bot = new eris.Client('NjQ3MTgyNTA4MDYwMDQ5NDEw.XhDoWA.G5HaPzWvbirume8qSe45phYlNRY');
 var guildID = "637354682716782602"
 var channelID ="647159337709469726"
 // When the bot is connected and ready, log to console.
@@ -113,6 +114,8 @@ if (!isDev && cluster.isMaster) {
         if (err) throw err;
         res.status(201).send()
         console.log("hallo")
+        console.log(data)
+        
     })
   });
 
@@ -126,17 +129,85 @@ if (!isDev && cluster.isMaster) {
     });
     
   });
-
+/*
   app.put('/api/story/:item', urlencodedParser, function(req, res){
     // Update the requested item from mongodb
     
     Story.find({item: req.params.item}).updateOne(function(err, data){
         if (err) throw err;
         res.json(data);
-        console.log("bye")
+        console.log("Edit")
     });
     
   });
+
+*/
+
+/*
+  app.put('/api/story/:item', urlencodedParser, function(req, res){
+    const itemId = req.params.item;
+    const item = req.body;
+  console.log("Editing item: ", itemId, " to be ", item);
+    // Update the requested item from mongodb
+    
+    Story.updateOne({ id: itemId }, { $set: item }, (err, data) => {
+      if (err) throw err;
+      // send back entire updated list, to make sure frontend data is up-to-date
+      console.log("working");
+  });
+});
+*/
+
+
+
+/*
+app.put("/api/story/:item", (request, response) => {
+  const itemId = request.params.item;
+  const item = request.body;
+  console.log("Editing item: ", itemId, " to be ", item);
+
+  Story.updateOne({ id: itemId }, { $set: item }, (error, result) => {
+      if (error) throw error;
+      // send back entire updated list, to make sure frontend data is up-to-date
+      Story.find().toArray(function(_error, _result) {
+        if (_error) throw _error;
+        response.json(_result);
+    });
+  });
+});
+*/
+/*
+
+app.put("/api/story/:item", (request, response) => {
+  const itemId = request.params.id;
+  const item = request.body;
+  console.log("Editing item: ", itemId, " to be ", item);
+
+  Story.updateOne({ id: itemId }, { $set: item }, (error, result) => {
+      if (error) throw error;
+      // send back entire updated list, to make sure frontend data is up-to-date
+
+  });
+});
+*/
+
+
+app.put('/api/story/', urlencodedParser, async function(req, res){
+  const filter = {_id:req.body._id}
+  const updatedItem ={item:req.body.item}
+  console.log("Editing item: ", filter, " to be ", updatedItem);
+  // Update the requested item from mongodb
+  
+  let doc = await Story.findOneAndUpdate(filter , updatedItem, {
+    new: true
+  });
+  console.log(doc.item)
+  console.log(doc._id)
+});
+
+
+
+
 
   // All remaining requests return the React app, so it can handle routing.
   app.get('*', function(request, response) {

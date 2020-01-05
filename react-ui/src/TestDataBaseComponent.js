@@ -142,6 +142,7 @@ render() {
                           mapKey={story._id}
                           StoryItem={story.item}
                           onClickDelete={story.item}
+                          onClickEdit={story.item}
                         />
                         </>
               })
