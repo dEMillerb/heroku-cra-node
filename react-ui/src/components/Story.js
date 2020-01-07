@@ -57,88 +57,38 @@ deleteStory(item) {
   
       })
   }
-
-//----------------------------------------------------
-
-
-/*onUpdateItem = StoryItem => {
-  this.setState(state => {
-    const story = state.StoryItem.map((item, j) => {
-      if (j === StoryItem) {
-        return item + this.state.valueEditarea;
-      } else {
-        return item;
-      }
-    });
-    console.log(StoryItem);
-    return {
-      story
-    };
-  });
-};
-*/
-/*
-onUpdateItem(item) {
-  console.log("Edit Story")
-  console.log(item)
-  fetch("/api/story", {  
-    method: 'PUT',
-    headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-    body: JSON.stringify({ "item": this.state.valueTextarea}),
-})
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`status ${response.status}`);
-      }
-      return response.json();
-      
-    })
-    .then(json => {
-      let story = this.state.StoryItem.filter(StoryItem =>{
-        return StoryItem !== StoryItem
-      });
-      this.setState({
-        StoryItem: story
-      });
-    })
-    .catch(e => {
-
-    })
-}*/
-
-onUpdateItem(item){
-  const textEdited = this.state.valueEditarea
-
-  this.setState({
-    StoryItem: textEdited
-  });
-
-  console.log("Edit Story")
-  console.log(item)
-  console.log(textEdited)
-  console.log(this.state.StoryItem)
+  onUpdateItem(item){
+    const textEdited = this.state.valueEditarea
   
-  fetch("/api/story/", {  
-    method: 'PUT',
-    headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-    body: JSON.stringify( {"item": textEdited, "_id":this.props.mapKey}),
-})
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`status ${response.status}`);
-      }
-      return response.json();
-      
-    })
-    .then(json => {
-
-    })
-    .catch(e => {
-
-    })
-}
-
-
+    this.setState({
+      StoryItem: textEdited
+    });
+  
+    console.log("Edit Story")
+    console.log(item)
+    console.log(textEdited)
+    console.log(this.state.StoryItem)
+    
+    fetch("/api/story/", {  
+      method: 'PUT',
+      headers: {'Accept': 'application/json','Content-Type': 'application/json'},
+      body: JSON.stringify( {"item": textEdited, "_id":this.props.mapKey}),
+  })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`status ${response.status}`);
+        }
+        return response.json();
+        
+      })
+      .then(json => {
+  
+      })
+      .catch(e => {
+  
+      })
+  }
+//----------------------------------------------------
 
     render() { 
         const editOn = this.state.editOn ? '' : 'editOff';
@@ -161,7 +111,7 @@ onUpdateItem(item){
                     <div className={`edit ${editOn}`}>
                         <textarea type="text" name="edit" placeholder="I missunderstood you? What is it you want to update?" value={this.state.valueEditarea} onChange={this.handleChange} />
                         <div className="icon-bgr">
-                        <img onClick={() => {this.onUpdateItem(this.props.onClickEdit)}} className="icon" src={editIcon}  alt="editIcon"/>
+                        <img onClick={() => {this.onUpdateItem(this.props.onClickEdit)}} className="icon-edit" src={editIcon}  alt="editIcon"/>
                         </div>
                     </div>
                     </div>

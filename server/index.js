@@ -14,7 +14,7 @@ mongoose.connect('mongodb+srv://testuser:user@cluster0-uq1kn.mongodb.net/test?re
 var storySchema = new mongoose.Schema({
   item: String
 });
-//mongoose.set('useFindAndModify', false);
+mongoose.set('useFindAndModify', false);
 var Story = mongoose.model('Story', storySchema);
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });

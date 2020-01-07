@@ -160,7 +160,9 @@ small{
       margin-right: 20px;
     }
     .interaction{
- 
+      &.disabled{
+        display: none;
+      }
       display: flex;
       flex-direction: column;
       .edit{
@@ -197,10 +199,7 @@ small{
             -webkit-transition: all 0.4s ease-in-out;
           }
         }
-        .icon{
-          display:flex;
-      
-        }
+       
         .icon-bgr{
           background-color: #393738;
           padding-right: 20px;
@@ -208,24 +207,36 @@ small{
           margin-left: 10px;
           display: flex;
           align-items: center;
-          .icon{
-            display: flex;
-            margin-top: 20px;
+          .icon-edit{
+            transition: all 0.4s ease-in-out;
+            -webkit-transition: all 0.4s ease-in-out;
+            border-radius: 25%;
+            border: 2px solid #fafafa;
+            background-color: #008000;
+            &:hover{
+              transition: all 0.4s ease-in-out;
+              -webkit-transition: all 0.4s ease-in-out;
+              border: 2px solid #ee7f00;
+              background-color: #008000;
+            }
           }
-          
-        }
-       
-
+          img{
+            padding: 5px;
+            height: 25px;
+            width: 25px;
+          }   
+        } 
       }
-      .icon{
+      .icon{    
+        padding: 5px;
         margin-bottom: 20px;
         background-color: #393738;
         height: 25px;
         width: 25px;
         color: #fafafa;
-        border: solid 6px #474546;
+        display:flex;
         border-radius: 50%;
-        border: 2px solid #ee7f00;
+        border: 2px solid #4c4c4c;
         transition: all 0.4s ease-in-out;
         -webkit-transition: all 0.4s ease-in-out;
         img{
@@ -235,16 +246,13 @@ small{
           transition: all 0.4s ease-in-out;
           -webkit-transition: all 0.4s ease-in-out;
         }
-        &:last-child{
-          border: 2px solid #285277;
-        }
         &:hover{
           border: 2px solid #474546 ;
           background-color: #ee7f00; transition: all 0.4s ease-in-out;
           -webkit-transition: all 0.4s ease-in-out;
-          &:last-child{
+          &:nth-child(2){
             border: 2px solid #474546 ;
-            background-color: #285277;
+            background-color: #d50000;
             transition: all 0.4s ease-in-out;
             -webkit-transition: all 0.4s ease-in-out;
           }
@@ -568,7 +576,7 @@ small{
       line-height: .4;
       }
       .vein-text{
-      font-size: 0.8rem;
+      font-size: 1rem;
       line-height: 1.5;
       }
   }
