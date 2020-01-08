@@ -109,7 +109,7 @@ deleteStory(item) {
                     </li>
                     <div className="interaction">
                     <div className={`edit ${editOn}`}>
-                        <textarea type="text" name="edit" placeholder="I missunderstood you? What is it you want to update?" value={this.state.valueEditarea} onChange={this.handleChange} />
+                        <textarea type="text" name="edit" placeholder="Did I misunderstand you? What is it you want to correct?" value={this.state.valueEditarea} onChange={this.handleChange} />
                         <div className="icon-bgr">
                         <img onClick={() => {this.onUpdateItem(this.props.onClickEdit)}} className="icon-edit" src={editIcon}  alt="editIcon"/>
                         </div>

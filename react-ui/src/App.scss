@@ -179,6 +179,7 @@ small{
           -webkit-transition: all 0.4s ease-in-out;
         }
         textarea{
+          min-height: 80px;
           display: flex ;
           flex:1 1 auto ;
           background-color: #393738;

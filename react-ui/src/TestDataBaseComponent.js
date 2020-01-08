@@ -156,9 +156,9 @@ render() {
           <Branch>  
             <Leaf>
             <form className="tgb-form" action="/api/story" method="POST" onSubmit={this.handleSubmit}>
-              <h3>Tell me fellow Ironlight, what Story can you tell me today?</h3>
-              <textarea type="text" name="item" placeholder="Tell me your Stroy" value={this.state.valueTextarea} onChange={this.handleChange} />
-              <button className="tgb-btn authorize" type="submit" value="Submit" >Add Story</button>
+              <h3>Tell me fellow Ironlight, what story can you tell me today?</h3>
+              <textarea type="text" name="item" placeholder="It all started with..." value={this.state.valueTextarea} onChange={this.handleChange} />
+              <button className="tgb-btn authorize" type="submit" value="Submit" >Add your story</button>
             </form> 
             </Leaf> 
           </Branch> 
